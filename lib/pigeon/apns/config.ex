@@ -97,6 +97,7 @@ defmodule Pigeon.APNS.Config do
     case :public_key.pem_decode(bin) do
       [{:Certificate, cert, _}] -> cert
       [{:RSAPrivateKey, key, _}] -> {:RSAPrivateKey, key}
+      [{:PrivateKeyInfo, key, _}] -> {:PrivateKeyInfo, key}
       _ -> {:error, {:invalid, bin}}
     end
   end
